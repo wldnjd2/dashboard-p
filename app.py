@@ -11,6 +11,14 @@ data = pd.read_csv("data/avocado.csv", index_col=0)
 data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
 data.sort_values("Date", inplace=True)
 
+# print(data.info())
+# print(data[['region', 'type', 'Date']].head())
+# print(data['region'].unique())
+print("Date Min: ", data.Date.min().date())
+print("Date Max: ", data.Date.max().date())
+print("Start Date:", data.Date.min().date())
+print("End Date:", data.Date.max().date())
+
 # step 2. Dash Class
 external_stylesheets = [
     {
@@ -21,6 +29,7 @@ external_stylesheets = [
 ]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.title = "Temp Analytics: Understand Your Data!"
+server = app.server
 
 # step 3. HTML
 app.layout = html.Div(
@@ -76,7 +85,7 @@ app.layout = html.Div(
                             id="date-range",
                             min_date_allowed=data.Date.min().date(),
                             max_date_allowed=data.Date.max().date(),
-														initial_visible_month=data.Date.min().date(),
+                            initial_visible_month=data.Date.min().date(),
                             start_date=data.Date.min().date(),
                             end_date=data.Date.max().date(),
                         ),
@@ -150,7 +159,6 @@ app.layout = html.Div(
     ]
 )
 
-
 @app.callback(
     [Output("price-chart", "figure"), Output("volume-chart", "figure")],
     [
@@ -179,9 +187,9 @@ def update_charts(region, avocado_type, start_date, end_date):
         ],
         "layout": {
             "title": {
-                "text": "Average Price of Avocados",
-                "x": 0.05,
-                "xanchor": "left",
+                "text": "아보카도 평균가격($)",
+                "x": 2,
+                "xanchor": "center",
             },
             "xaxis": {"fixedrange": True},
             "yaxis": {"tickprefix": "$", "fixedrange": True},
@@ -199,9 +207,9 @@ def update_charts(region, avocado_type, start_date, end_date):
         ],
         "layout": {
             "title": {
-                "text": "Avocados Sold",
-                "x": 0.05,
-                "xanchor": "left"
+                "text": "아보카도 판매량",
+                "x": 2,
+                "xanchor": "center",
             },
             "xaxis": {"fixedrange": True},
             "yaxis": {"fixedrange": True},
@@ -210,6 +218,6 @@ def update_charts(region, avocado_type, start_date, end_date):
     }
     return price_chart_figure, volume_chart_figure
 
-#배포
+
 if __name__ == "__main__":
     app.run_server(debug=True)

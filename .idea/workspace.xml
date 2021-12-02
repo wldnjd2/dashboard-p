@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f47d3cf5-0252-49ca-b1cc-963dc12d8ef6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/data/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +32,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jiwon\Desktop\dashboard-p" />
       <recent name="C:\Users\jiwon\Desktop\dashboard-p\data" />
     </key>
   </component>
