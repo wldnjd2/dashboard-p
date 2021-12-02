@@ -6,7 +6,7 @@ import numpy as np
 from dash.dependencies import Output, Input
 
 # step 1. Data Import
-data = pd.read_csv("https://raw.githubusercontent.com/wldnjd2/dashboard-p/main/data/avocado.csv", index_col=0)
+data = pd.read_csv("data/avocado.csv", index_col=0)
 # data = data.query("type == 'conventional' and region == 'Albany'")
 data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
 data.sort_values("Date", inplace=True)
